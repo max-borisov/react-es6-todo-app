@@ -4,7 +4,7 @@ var TodoButton = require('../button');
 
 var AppContent = React.createClass({
 
-  render: function() {
+  render() {
 
     return (
       <div className="content">

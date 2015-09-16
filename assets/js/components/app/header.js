@@ -1,8 +1,9 @@
 var React = require('react');
 
+// export default AppHeader = React.createClass({
 var AppHeader = React.createClass({
 
-  render: function() {
+  render() {
 
     return (
       <div className='header'>

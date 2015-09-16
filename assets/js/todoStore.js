@@ -1,4 +1,5 @@
 var Routes = require('./routes');
+var routes = new Routes();
 
 var TodoStore = {
   _state: {
@@ -11,7 +12,7 @@ var TodoStore = {
 
   loadProject: function() {
     var obj = this;
-    $.getJSON(Routes.projectsIndex(), function(data) {
+    $.getJSON(routes.projectsIndex(), function(data) {
       obj._state.todo = data;
       obj.onChange();
     });
@@ -133,4 +134,4 @@ var TodoStore = {
   }
 };
 
-export default TodoStore;
+module.exports = TodoStore;

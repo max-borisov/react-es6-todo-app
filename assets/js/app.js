@@ -1,28 +1,28 @@
-var React = require('react');
-var AppHeader = require('./components/app/header');
-var AppContent = require('./components/app/content');
-var TodoStore = require('./todoStore');
+import React from 'react';
+import AppHeader from './components/app/header';
+import AppContent from './components/app/content';
+import TodoStore from './todoStore';
 
 var TodoApp = React.createClass({
 
-  getInitialState: function() {
+  getInitialState() {
     return this.getStateFromStore();
   },
 
-  getStateFromStore: function() {
+  getStateFromStore() {
     return TodoStore.getState();
   },
 
-  componentDidMount: function() {
+  componentDidMount() {
     TodoStore.onChange = this.onChange;
     TodoStore.loadProject();
   },
 
-  onChange: function() {
+  onChange() {
     this.setState(this.getStateFromStore());
   },
 
-  render: function() {
+  render() {
 
     return (
       <div className='main'>

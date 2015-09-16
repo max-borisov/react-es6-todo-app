@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "watchify -d -e assets/js/app.js -t babelify --outfile dist/js/app.js"
+    "build-js": "browserify -d assets/js/app.js -t babelify -o dist/js/app.js",
+    "watch-js": "watchify -d -e assets/js/app.js -t babelify -o dist/js/app.js -v",
+    "server": "static -p 8888",
+    "scss-run": "scss assets/scss/application.scss dist/css/application.css -t expanded"
   },
   "author": "",
   "license": "ISC",
@@ -12,6 +15,7 @@
     "babelify": "^6.2.0",
     "browserify": "^11.0.1",
     "react": "^0.13.3",
+    "static-server": "^2.0.0",
     "watchify": "^3.3.1"
   }
 }

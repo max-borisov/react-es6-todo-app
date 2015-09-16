@@ -1,8 +1,5 @@
-/*
- *= require normalize
- *= require main
- *= require_self
- */
+@import 'main';
+@import 'normalize';
 
 $bh-color: #d1cfc0;
 $todo-header-height: 50px;
