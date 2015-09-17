@@ -1,9 +1,9 @@
-var React = require('react');
-var Task = require('./task');
+import React from 'react';
+import Task from './task';
 
 var TaskList = React.createClass({
 
-  render: function() {
+  render() {
     var project = this.props.project;
 
     var tasks = this.props.tasks.map(function(task) {
@@ -22,4 +22,4 @@ var TaskList = React.createClass({
   }
 });
 
-module.exports = TaskList;
+export default TaskList;

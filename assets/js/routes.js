@@ -1,7 +1,8 @@
 export default class Routes {
 
   constructor() {
-    this._host = 'https://rails-api-todo-app.herokuapp.com/api';
+    // this._host = 'https://rails-api-todo-app.herokuapp.com/api';
+    this._host = 'http://localhost:9191/api';
   }
 
   projectsIndex() { return this._host + '/projects'; }

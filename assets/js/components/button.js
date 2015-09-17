@@ -1,14 +1,14 @@
-var React = require('react');
-var TodoAction = require('../todoAction');
+import React from 'react';
+import TodoAction from '../todoAction';
 
 var TodoButton = React.createClass({
 
-  onCreateProject: function(event) {
+  onCreateProject(event) {
     event.preventDefault();
     TodoAction.createProject();
   },
 
-  render: function() {
+  render() {
 
     return (
       <div className='new-todo'>
@@ -20,4 +20,4 @@ var TodoButton = React.createClass({
   }
 });
 
-module.exports = TodoButton;
+export default TodoButton;

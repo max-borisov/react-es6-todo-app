@@ -1,16 +1,16 @@
-var React = require('react');
-var TodoAction = require('../../todoAction');
+import React from 'react';
+import TodoAction from '../../todoAction';
 
 var ProjectBar = React.createClass({
 
-  onCreateTask: function(event) {
+  onCreateTask(event) {
     event.preventDefault();
     var project = this.props.project;
     var taskInput = React.findDOMNode(this.refs.description);
     TodoAction.createTask(project, taskInput);
   },
 
-  render: function() {
+  render() {
 
     return (
       <div className='todo-bar'>
@@ -26,4 +26,4 @@ var ProjectBar = React.createClass({
   }
 });
 
-module.exports = ProjectBar;
+export default ProjectBar;

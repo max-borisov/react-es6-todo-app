@@ -1,6 +1,6 @@
-var React = require('react');
-var ProjectList = require('../project/list');
-var TodoButton = require('../button');
+import React from 'react';
+import ProjectList from '../project/list';
+import TodoButton from '../button';
 
 var AppContent = React.createClass({
 
@@ -15,4 +15,4 @@ var AppContent = React.createClass({
   }
 });
 
-module.exports = AppContent;
+export default AppContent;

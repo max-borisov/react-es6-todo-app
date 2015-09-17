@@ -1,25 +1,26 @@
-var React = require('react');
-var TodoAction = require('../../todoAction');
-var Routes = require('../../routes');
+import React from 'react';
+import TodoAction from '../../todoAction';
+import Routes from '../../routes';
 
 var Task = React.createClass({
 
-  getInitialState: function() {
+  getInitialState() {
+
     return {
       editMode: false,
       description: this.props.task.description,
     };
   },
 
-  getProject: function() {
+  getProject() {
     return this.props.project;
   },
 
-  getTask: function() {
+  getTask() {
     return this.props.task;
   },
 
-  onDeleteTask: function(event) {
+  onDeleteTask(event) {
     event.preventDefault();
 
     if (confirm('Are you sure ?')) {
@@ -27,14 +28,14 @@ var Task = React.createClass({
     }
   },
 
-  onCompleteTask: function(event) {
+  onCompleteTask(event) {
     var project = this.getProject();
     var task = this.getTask();
     var complete = event.target.checked;
     TodoAction.completeTask(project, task, complete);
   },
 
-  onEditTask: function(event) {
+  onEditTask(event) {
     event.preventDefault();
     this.setState({ editMode: !this.state.editMode }, function() {
       if (this.state.editMode === true) {
@@ -43,7 +44,7 @@ var Task = React.createClass({
     });
   },
 
-  onEditDescription: function(event) {
+  onEditDescription(event) {
     var description = event.target.value;
     if (event.keyCode === 13) {
       this.setState({
@@ -57,7 +58,7 @@ var Task = React.createClass({
     }
   },
 
-  render: function() {
+  render() {
 
     var task = this.getTask();
     var completed = task.completed === true ? true : false;
@@ -89,4 +90,4 @@ var Task = React.createClass({
   }
 });
 
-module.exports = Task;
+export default Task;

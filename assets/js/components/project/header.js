@@ -1,20 +1,21 @@
-var React = require('react');
-var TodoAction = require('../../todoAction');
+import React from 'react';
+import TodoAction from '../../todoAction';
 
 var ProjectHeader = React.createClass({
 
-  getInitialState: function() {
+  getInitialState() {
+
     return {
       editMode: false,
       title: this.props.project.title,
     };
   },
 
-  getProject: function() {
+  getProject() {
     return this.props.project;
   },
 
-  onDeleteProject: function(event) {
+  onDeleteProject(event) {
     event.preventDefault();
 
     if (confirm('Are you sure ?')) {
@@ -22,7 +23,7 @@ var ProjectHeader = React.createClass({
     }
   },
 
-  onEditProject: function(event) {
+  onEditProject(event) {
     event.preventDefault();
     this.setState({ editMode: !this.state.editMode }, function() {
       if (this.state.editMode === true) {
@@ -31,7 +32,7 @@ var ProjectHeader = React.createClass({
     });
   },
 
-  onEditTitle: function(event) {
+  onEditTitle(event) {
     if (event.keyCode === 13) {
       this.setState({
         editMode: false,
@@ -44,7 +45,7 @@ var ProjectHeader = React.createClass({
     }
   },
 
-  render: function() {
+  render() {
     var project = this.getProject();
     var editModeClass = this.state.editMode ? ' edit-mode' : '';
     return (
@@ -64,4 +65,4 @@ var ProjectHeader = React.createClass({
   }
 });
 
-module.exports = ProjectHeader;
+export default ProjectHeader;

@@ -1,10 +1,10 @@
-var React = require('react');
-var Project = require('./project');
-var LoadIndicator = require('../loader');
+import React from 'react';
+import Project from './project';
+import LoadIndicator from '../loader';
 
 var ProjectList = React.createClass({
 
-  render: function() {
+  render() {
     var todoList = this.props.todo;
     var projects = todoList.map(function(project) {
       return <Project project={project} key={project.id} />
@@ -24,4 +24,4 @@ var ProjectList = React.createClass({
   }
 });
 
-module.exports = ProjectList;
+export default ProjectList;

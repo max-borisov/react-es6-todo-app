@@ -1,6 +1,5 @@
-var React = require('react');
+import React from 'react';
 
-// export default AppHeader = React.createClass({
 var AppHeader = React.createClass({
 
   render() {
@@ -13,4 +12,4 @@ var AppHeader = React.createClass({
   }
 });
 
-module.exports = AppHeader;
+export default AppHeader;

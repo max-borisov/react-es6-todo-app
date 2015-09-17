@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react';
 
 var LoadIndicator = React.createClass({
 
@@ -10,4 +10,4 @@ var LoadIndicator = React.createClass({
   }
 });
 
-module.exports = LoadIndicator;
+export default LoadIndicator;

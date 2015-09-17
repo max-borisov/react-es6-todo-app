@@ -1,11 +1,11 @@
-var React = require('react');
-var ProjectHeader = require('./header');
-var ProjectBar = require('./bar');
-var ProjectTaskList = require('../task/list');
+import React from 'react';
+import ProjectHeader from './header';
+import ProjectBar from './bar';
+import ProjectTaskList from '../task/list';
 
 var Project = React.createClass({
 
-  render: function() {
+  render() {
 
     var project = this.props.project;
 
@@ -19,4 +19,4 @@ var Project = React.createClass({
   }
 });
 
-module.exports = Project;
+export default Project;
