@@ -1,6 +1,7 @@
 import React from 'react';
-import TodoAction from '../../todoAction';
-import Routes from '../../routes';
+import Routes from '../lib/Routes';
+import * as dispatcher from '../flux/Dispatcher';
+import * as Actions from '../flux/Actions';
 
 var Task = React.createClass({
 
@@ -24,20 +25,22 @@ var Task = React.createClass({
     event.preventDefault();
 
     if (confirm('Are you sure ?')) {
-      TodoAction.deleteTask(this.props.project, this.getTask());
+      let projectId = this.getProject().id;
+      let taskId = this.getTask().id;
+      dispatcher.emit(Actions.DELETE_TASK, { projectId, taskId });
     }
   },
 
   onCompleteTask(event) {
-    var project = this.getProject();
-    var task = this.getTask();
-    var complete = event.target.checked;
-    TodoAction.completeTask(project, task, complete);
+    let projectId = this.getProject().id;
+    let taskId = this.getTask().id;
+    let isComplete = event.target.checked;
+    dispatcher.emit(Actions.COMPLETE_TASK, { projectId, taskId, isComplete });
   },
 
   onEditTask(event) {
     event.preventDefault();
-    this.setState({ editMode: !this.state.editMode }, function() {
+    this.setState({ editMode: !this.state.editMode }, () => {
       if (this.state.editMode === true) {
         React.findDOMNode(this.refs.input).focus();
       }
@@ -45,23 +48,21 @@ var Task = React.createClass({
   },
 
   onEditDescription(event) {
-    var description = event.target.value;
+    let description = event.target.value;
     if (event.keyCode === 13) {
       this.setState({
         editMode: false,
         description: description,
-      }, function() {
-        var project = this.getProject();
-        var task = this.getTask();
-        TodoAction.editTask(project, task, description);
+      }, () => {
+        let projectId = this.getProject().id;
+        let taskId = this.getTask().id;
+        dispatcher.emit(Actions.EDIT_TASK, { projectId, taskId, description });
       });
     }
   },
 
   render() {
-
-    var task = this.getTask();
-    var completed = task.completed === true ? true : false;
+    var completed = this.getTask().completed === true ? true : false;
     var editModeClass = this.state.editMode ? ' edit-mode' : '';
 
     return (

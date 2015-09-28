@@ -1,13 +1,14 @@
 import React from 'react';
-import TodoAction from '../../todoAction';
+import * as dispatcher from '../flux/Dispatcher';
+import Actions from '../flux/Actions';
 
 var ProjectBar = React.createClass({
 
   onCreateTask(event) {
     event.preventDefault();
-    var project = this.props.project;
-    var taskInput = React.findDOMNode(this.refs.description);
-    TodoAction.createTask(project, taskInput);
+    let projectId = this.props.project.id;
+    let taskInput = React.findDOMNode(this.refs.description);
+    dispatcher.emit(Actions.CREATE_TASK, { projectId, taskInput });
   },
 
   render() {

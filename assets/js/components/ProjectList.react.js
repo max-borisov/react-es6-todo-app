@@ -1,12 +1,12 @@
 import React from 'react';
-import Project from './project';
-import LoadIndicator from '../loader';
+import Project from './Project.react';
+import LoadIndicator from './LoadIndicator.react';
 
 var ProjectList = React.createClass({
 
   render() {
-    var todoList = this.props.todo;
-    var projects = todoList.map(function(project) {
+
+    var projects = this.props.todo.map((project) => {
       return <Project project={project} key={project.id} />
     });
 
