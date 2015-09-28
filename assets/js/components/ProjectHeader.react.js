@@ -1,10 +1,10 @@
 import React from 'react';
-import TodoAction from '../../todoAction';
+import * as dispatcher from '../flux/Dispatcher';
+import Actions from '../flux/Actions';
 
 var ProjectHeader = React.createClass({
 
   getInitialState() {
-
     return {
       editMode: false,
       title: this.props.project.title,
@@ -19,13 +19,14 @@ var ProjectHeader = React.createClass({
     event.preventDefault();
 
     if (confirm('Are you sure ?')) {
-      TodoAction.deleteProject(this.getProject());
+      let projectId = this.getProject().id;
+      dispatcher.emit(Actions.DELETE_PROJECT, { projectId });
     }
   },
 
   onEditProject(event) {
     event.preventDefault();
-    this.setState({ editMode: !this.state.editMode }, function() {
+    this.setState({ editMode: !this.state.editMode }, () => {
       if (this.state.editMode === true) {
         React.findDOMNode(this.refs.input).focus();
       }
@@ -37,16 +38,16 @@ var ProjectHeader = React.createClass({
       this.setState({
         editMode: false,
         title: event.target.value,
-      }, function() {
-        var project = this.getProject();
-        var title = this.state.title;
-        TodoAction.editProject(project, title);
+      }, () => {
+        let projectId = this.getProject().id;
+        let title = this.state.title;
+        dispatcher.emit(Actions.EDIT_PROJECT, { projectId, title });
       });
     }
   },
 
   render() {
-    var project = this.getProject();
+
     var editModeClass = this.state.editMode ? ' edit-mode' : '';
     return (
       <div className={'todo-header' + editModeClass}>

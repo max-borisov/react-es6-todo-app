@@ -1,8 +1,9 @@
 import React from 'react';
-import AppHeader from './components/app/header';
-import AppContent from './components/app/content';
-import TodoStore from './todoStore';
+import AppHeader from './components/AppHeader.react';
+import AppContent from './components/AppContent.react';
+import Store from './flux/Store';
 
+var store = Store.instance;
 var TodoApp = React.createClass({
 
   getInitialState() {
@@ -10,12 +11,12 @@ var TodoApp = React.createClass({
   },
 
   getStateFromStore() {
-    return TodoStore.getState();
+    return store.getState();
   },
 
   componentDidMount() {
-    TodoStore.onChange = this.onChange;
-    TodoStore.loadProject();
+    store.loadProject();
+    store.addChangeListener(this.onChange);
   },
 
   onChange() {

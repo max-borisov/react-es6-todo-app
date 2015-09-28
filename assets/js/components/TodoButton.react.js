@@ -1,11 +1,12 @@
 import React from 'react';
-import TodoAction from '../todoAction';
+import * as dispatcher from '../flux/Dispatcher';
+import Actions from '../flux/Actions';
 
 var TodoButton = React.createClass({
 
   onCreateProject(event) {
     event.preventDefault();
-    TodoAction.createProject();
+    dispatcher.emit(Actions.CREATE_PROJECT);
   },
 
   render() {

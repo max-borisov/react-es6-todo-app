@@ -1,6 +1,6 @@
 import React from 'react';
-import ProjectList from '../project/list';
-import TodoButton from '../button';
+import ProjectList from './ProjectList.react';
+import TodoButton from './TodoButton.react';
 
 var AppContent = React.createClass({
 

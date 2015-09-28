@@ -1,7 +1,7 @@
 import React from 'react';
-import ProjectHeader from './header';
-import ProjectBar from './bar';
-import ProjectTaskList from '../task/list';
+import ProjectHeader from './ProjectHeader.react';
+import ProjectBar from './ProjectBar.react';
+import ProjectTaskList from './TaskList.react';
 
 var Project = React.createClass({
 
