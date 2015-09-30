@@ -7,7 +7,7 @@ var ProjectList = React.createClass({
   render() {
 
     var projects = this.props.todo.map((project) => {
-      return <Project project={project} key={project.id} />
+      return <Project project={project} key={project.id} />;
     });
 
     if (projects.length > 0) {

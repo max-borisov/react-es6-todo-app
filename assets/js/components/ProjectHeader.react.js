@@ -7,7 +7,7 @@ var ProjectHeader = React.createClass({
   getInitialState() {
     return {
       editMode: false,
-      title: this.props.project.title,
+      title: this.props.project.title
     };
   },
 
@@ -37,7 +37,7 @@ var ProjectHeader = React.createClass({
     if (event.keyCode === 13) {
       this.setState({
         editMode: false,
-        title: event.target.value,
+        title: event.target.value
       }, () => {
         let projectId = this.getProject().id;
         let title = this.state.title;

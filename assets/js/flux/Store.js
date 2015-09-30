@@ -35,6 +35,7 @@ class Store {
 
   deleteTaskDom({ projectId, taskId }) {
     let todo = Object.assign([], this.getState().todo);
+    // [...[], ...todo]
     todo = todo.map((project) => {
       if (project.id === projectId) {
         project.tasks = project.tasks.filter((pt) => pt.id !== taskId);

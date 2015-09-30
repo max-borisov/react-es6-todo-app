@@ -1,7 +1,7 @@
 Todo app build with React/Flux/ES6
 ===
 
-## [Demo on Heroku](https://max-borisov.github.io/todo-react-flux-es6)
+## [Demo on Github pages](https://max-borisov.github.io/todo-react-flux-es6)
 
 In order to run the app:
 * Clone the repo
