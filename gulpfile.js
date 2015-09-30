@@ -20,18 +20,12 @@ gulp.task('scss:watch', ['scss'], function() {
   gulp.watch('./assets/scss/*.scss', ['scss']);
 });
 
-// gulp.task('jshint', function() {
-//   return gulp.src('./assets/js/**/*.js')
-//     .pipe(babel())
-//     .pipe(jshint.reporter('jshint-stylish'));
-// });
-
 gulp.task('server', function() {
   var server = new StaticServer({
     rootPath: '.',            // required, the root of the server file tree
     port: 8787,               // optional, defaults to a random port
-    host: '127.0.0.1',       // optional, defaults to any interface
-    followSymlink: true      // optional, defaults to a 404 error
+    host: '127.0.0.1',        // optional, defaults to any interface
+    followSymlink: true       // optional, defaults to a 404 error
   });
 
   server.start(function () {
@@ -52,21 +46,6 @@ gulp.task('js', function() {
     .pipe(gulp.dest('./dist/js'));
 });
 
-// gulp.task('js:watchify', function() {
-//   var opts = assign({}, watchify.args, { entries: './assets/js/app.js', debug: true });
-//   var b = watchify(browserify(opts));
-
-//   b.on('update', bundle); // on any dep update, runs the bundler
-//   // b.on('log', gutil.log); // output build logs to terminal
-
-//   function bundle() {
-//     return b.transform(babelify)
-//       .bundle()
-//       .pipe(source('app.js'))
-//       .pipe(gulp.dest('./dist/js'));
-//   }
-// });
-
 gulp.task('js:watch', ['js'], function() {
   gulp.watch('./assets/js/**/*.js', ['js']);
 });
@@ -74,15 +53,15 @@ gulp.task('js:watch', ['js'], function() {
 gulp.task('watch', ['scss:watch', 'js:watch']);
 
 gulp.task('sync', function() {
-   // Serve files from the root of this project
-    browserSync.init({
-        server: {
-            baseDir: "./"
-        },
-        port: 8787
-    });
+  // Serve files from the root of this project
+  browserSync.init({
+    server: {
+      baseDir: './'
+    },
+    port: 8787
+  });
 
-    gulp.watch("./dist/**/*").on("change", browserSync.reload);
+  gulp.watch('./dist/**/*').on('change', browserSync.reload);
 });
 
 // gulp.task('default', ['watch']);
