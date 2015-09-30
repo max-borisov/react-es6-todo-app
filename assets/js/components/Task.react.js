@@ -9,7 +9,7 @@ var Task = React.createClass({
 
     return {
       editMode: false,
-      description: this.props.task.description,
+      description: this.props.task.description
     };
   },
 
@@ -27,7 +27,7 @@ var Task = React.createClass({
     if (confirm('Are you sure ?')) {
       let projectId = this.getProject().id;
       let taskId = this.getTask().id;
-      dispatcher.emit(Actions.DELETE_TASK, { projectId, taskId });
+      dispatcher.emit(Actions.DELETE_TASK_DOM, { projectId, taskId });
     }
   },
 
@@ -52,7 +52,7 @@ var Task = React.createClass({
     if (event.keyCode === 13) {
       this.setState({
         editMode: false,
-        description: description,
+        description: description
       }, () => {
         let projectId = this.getProject().id;
         let taskId = this.getTask().id;

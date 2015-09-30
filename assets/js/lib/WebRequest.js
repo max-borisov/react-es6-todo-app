@@ -49,17 +49,17 @@ export default class WebRequest {
   static createTask(projectId, taskInput, store) {
     let description = taskInput.value;
     $.post(routes.tasksCreate(projectId), { task: { description } }, (data) => {
-      let todo = store.getState().todo;
-      todo.map((projectItem) => {
-        if (projectItem.id === projectId) {
-          projectItem.tasks.push({
+      let todo = Object.assign([], store.getState().todo);
+      for (let index in todo) {
+        if (todo[index].id === projectId) {
+          todo[index].tasks.push({
             id: data.id,
             description: data.description,
             completed: data.completed
           });
         }
-      });
-
+      }
+      store._state.todo = todo;
       store.onChange();
       taskInput.value = '';
     });
