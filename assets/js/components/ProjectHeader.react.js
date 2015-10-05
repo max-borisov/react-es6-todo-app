@@ -17,7 +17,6 @@ var ProjectHeader = React.createClass({
 
   onDeleteProject(event) {
     event.preventDefault();
-
     if (confirm('Are you sure ?')) {
       let projectId = this.getProject().id;
       dispatcher.emit(Actions.DELETE_PROJECT, { projectId });
@@ -41,7 +40,7 @@ var ProjectHeader = React.createClass({
       }, () => {
         let projectId = this.getProject().id;
         let title = this.state.title;
-        dispatcher.emit(Actions.EDIT_PROJECT, { projectId, title });
+        dispatcher.emit(Actions.EDIT_PROJECT_REQUEST, { projectId, title });
       });
     }
   },

@@ -8,7 +8,7 @@ var ProjectBar = React.createClass({
     event.preventDefault();
     let projectId = this.props.project.id;
     let taskInput = React.findDOMNode(this.refs.description);
-    dispatcher.emit(Actions.CREATE_TASK, { projectId, taskInput });
+    dispatcher.emit(Actions.CREATE_TASK_REQUEST, { projectId, taskInput });
   },
 
   render() {

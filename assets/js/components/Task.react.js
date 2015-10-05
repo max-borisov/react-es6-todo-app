@@ -27,15 +27,15 @@ var Task = React.createClass({
     if (confirm('Are you sure ?')) {
       let projectId = this.getProject().id;
       let taskId = this.getTask().id;
-      dispatcher.emit(Actions.DELETE_TASK_DOM, { projectId, taskId });
+      dispatcher.emit(Actions.DELETE_TASK, { projectId, taskId });
     }
   },
 
   onCompleteTask(event) {
     let projectId = this.getProject().id;
     let taskId = this.getTask().id;
-    let isComplete = event.target.checked;
-    dispatcher.emit(Actions.COMPLETE_TASK, { projectId, taskId, isComplete });
+    let complete = event.target.checked;
+    dispatcher.emit(Actions.COMPLETE_TASK_REQUEST, { projectId, taskId, complete });
   },
 
   onEditTask(event) {
@@ -56,7 +56,7 @@ var Task = React.createClass({
       }, () => {
         let projectId = this.getProject().id;
         let taskId = this.getTask().id;
-        dispatcher.emit(Actions.EDIT_TASK, { projectId, taskId, description });
+        dispatcher.emit(Actions.EDIT_TASK_REQUEST, { projectId, taskId, description });
       });
     }
   },

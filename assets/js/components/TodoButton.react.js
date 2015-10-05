@@ -6,7 +6,7 @@ var TodoButton = React.createClass({
 
   onCreateProject(event) {
     event.preventDefault();
-    dispatcher.emit(Actions.CREATE_PROJECT);
+    dispatcher.emit(Actions.CREATE_PROJECT_REQUEST, {});
   },
 
   render() {
